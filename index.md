@@ -1,37 +1,160 @@
-## Welcome to GitHub Pages
+# Fork-Arduino переводчик, или как выучить Fork зная Arduino
 
-You can use the [editor on GitHub](https://github.com/Rodionva/fork/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+## Служебные команды
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+|   Fork-код    |   Arduino-код   |
+| :------------ |:---------------:|
+```подключить``` | ```#include```
+```определить``` |``` #define```
+```функция```  |```void```
+```установки```  |```setup```
+```повторять``` | ```loop```
 
-### Markdown
+Пример использования:
+```
+подключить СервоБ
+определить Серво Мотор
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+функция установки()
+{
 
-```markdown
-Syntax highlighted code block
+}
 
-# Header 1
-## Header 2
-### Header 3
+функция повторять()
+{
 
-- Bulleted
-- List
+}
+```
+Результат построения:
+```
+#include <Servo.h>
+#define Servo Motor
 
-1. Numbered
-2. List
+void setup()
+{
 
-**Bold** and _Italic_ and `Code` text
+}
 
-[Link](url) and ![Image](src)
+void loop()
+{
+
+}
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+## Переменные
 
-### Jekyll Themes
+|   Fork-код    |   Arduino-код   |
+| :------------ |:---------------:|
+```строка```| ```String```
+```число```| ```int```
+```логика```| ```boolean```
+```байт```| ```byte```
+```символ``` |```char```
+```числоСТочкой ```|```float```
+```беззнаковое``` |```unsigned```
+```длинное```|``` long```
+```нестабильное ```|```volatile```
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Rodionva/fork/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+Пример использования:
+```
+строка имя = "Саша";
+число возраст = 10;
+логика учвшколе = истина;
+байт класс = 3;
+символ литер = 'в';
+числоСТочкой температура = 36.6;
+```
+Результат построения:
+```
+String imya = "Саша";
+int vozrast = 10;
+boolean uchvshkole = true;
+byte klass = 3;
+char liter = 'в';
+float temperatura = 36.6;
+```
 
-### Support or Contact
+## Функции
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+|   Fork-код    |   Arduino-код   |
+| :------------ |:---------------:|
+```режимПорта``` |```pinMode```
+```написатьЦифровой```| ```digitalWrite```
+```написатьАналоговый``` |```analogWrite```
+```задвинуть```| ```shiftOut```
+```прочитатьЦифровой``` |```digitalRead```
+```прочитатьАналоговый``` |```analogRead```
+```подождать```|``` delay```
+```проекция``` |```map```
+```пищать ```|```tone```
+```неПищать``` |```noTone```
+```случайный``` |```random```
+```времяСоСтарта``` |```millis```
+```ограничить ```|```constrain```
+```модуль```| ```abs```
+
+
+Пример использования:
+```
+режимПорта(3, ВЫХОД);
+написатьЦифровой(3, ВЫСОКИЙ);
+написатьАналоговый(3, 200);
+задвинуть();
+прочитатьЦифровой(4);
+прочитатьАналоговый(А0*);
+подождать(1000);
+проекция();
+пищать(5, 500);
+неПищать(5);
+случайный(10, 20);
+времяСоСтарта();
+ограничить(сенсорзнач, 10, 150);
+модуль(сенсорзнач);
+```
+Результат построения:
+```
+pinMode(3, OUTPUT);
+digitalWrite(3, );
+analogWrite(3, 200);
+shiftOut();
+digitalRead(4);
+analogRead(A0*);
+delay(1000);
+map();
+tone(5, 500);
+noTone(5);
+random(10, 20);
+millis();
+constrain(sensorznach, 10, 150);
+abs(sensorznach);
+```
+*- при написании аналоговых портов можно использовать как русскую букву А так и английскую A.
+
+## Вывод (serial port)
+
+|   Fork-код    |   Arduino-код   |
+| :------------ |:---------------:|
+```Вывод```| ```Serial```
+```назначить ```|```begin```
+```написатьСтроку```| ```println```
+```написать``` |```print```
+```прочитать```| ```read```
+```новое``` |```available```
+
+
+Пример использования:
+```
+Вывод.назначить(9600);
+Вывод.написать("Привет,");
+Вывод.написатьСтроку(" мир!");
+логика порт = Вывод.новое();
+строка ввод = Вывод.прочитать();
+```
+Результат построения:
+```
+Serial.begin(9600);
+Serial.print("Привет,");
+Serial.println(" мир!");
+boolean port = Serial.available();
+String vvod = Serial.read();
+```
